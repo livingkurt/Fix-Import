@@ -4,6 +4,10 @@
   "displayName": "Fix Imports",
   "description": "Extension to fix imports",
   "main": "./out/extension.js",
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/livingkurt/Fix-Import"
+  },
   "engines": {
     "vscode": "^1.81.0"
   },
