@@ -1,6 +1,6 @@
 {
   "name": "exact-imports",
-  "version": "0.0.1",
+  "version": "0.0.2",
   "displayName": "Exact Imports",
   "description": "Extension to exact imports",
   "publisher": "livingkurt",
@@ -13,7 +13,8 @@
     "vscode": "^1.81.0"
   },
   "scripts": {
-    "compile": "tsc"
+    "compile": "tsc",
+    "build": "npm run compile && vsce package"
   },
   "contributes": {
     "commands": [
