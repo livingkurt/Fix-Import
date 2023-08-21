@@ -1,12 +1,13 @@
 {
-  "name": "fix-imports",
+  "name": "exact-imports",
   "version": "0.0.1",
-  "displayName": "Fix Imports",
-  "description": "Extension to fix imports",
+  "displayName": "Exact Imports",
+  "description": "Extension to exact imports",
+  "publisher": "livingkurt",
   "main": "./out/extension.js",
   "repository": {
     "type": "git",
-    "url": "https://github.com/livingkurt/Fix-Import"
+    "url": "https://github.com/livingkurt/Exact-Import"
   },
   "engines": {
     "vscode": "^1.81.0"
@@ -17,19 +18,19 @@
   "contributes": {
     "commands": [
       {
-        "command": "extension.fixImports",
-        "title": "Fix Imports"
+        "command": "extension.exactImports",
+        "title": "Exact Imports"
       }
     ],
     "keybindings": [
       {
-        "command": "extension.fixImports",
+        "command": "extension.exactImports",
         "key": "ctrl+f9"
       }
     ]
   },
   "activationEvents": [
-    "onCommand:extension.fixImports"
+    "onCommand:extension.exactImports"
   ],
   "dependencies": {
     "typescript": "^5.1.6"
