@@ -4,39 +4,22 @@ export function activate(context: vscode.ExtensionContext) {
   let disposable = vscode.commands.registerCommand(
     "extension.exactImports",
     () => {
-      exactImportsCommand();
-    }
-  );
-
-  context.subscriptions.push(disposable);
-
-  vscode.workspace.onWillSaveTextDocument(
-    (e: vscode.TextDocumentWillSaveEvent) => {
-      const exactImportsOnSave = vscode.workspace
-        .getConfiguration("exactImports")
-        .get("exactImportsOnSave");
-      if (exactImportsOnSave) {
-        e.waitUntil(exactImportsCommand());
+      const editor = vscode.window.activeTextEditor;
+      if (editor) {
+        const document = editor.document;
+        const text = document.getText();
+        const newText = exactImports(text);
+        const fullRange = new vscode.Range(
+          document.positionAt(0),
+          document.positionAt(text.length)
+        );
+        editor.edit(editBuilder => {
+          editBuilder.replace(fullRange, newText);
+        });
       }
     }
   );
-}
-
-function exactImportsCommand(): Thenable<boolean> {
-  const editor = vscode.window.activeTextEditor;
-  if (editor) {
-    const document = editor.document;
-    const text = document.getText();
-    const newText = exactImports(text);
-    const fullRange = new vscode.Range(
-      document.positionAt(0),
-      document.positionAt(text.length)
-    );
-    return editor.edit(editBuilder => {
-      editBuilder.replace(fullRange, newText);
-    });
-  }
-  return Promise.resolve(false);
+  context.subscriptions.push(disposable);
 }
 
 export function deactivate() {}

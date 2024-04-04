@@ -28,11 +28,19 @@
         "command": "extension.exactImports",
         "key": "ctrl+f9"
       }
-    ]
+    ],
+    "configuration": {
+      "type": "object",
+      "title": "Exact Imports",
+      "properties": {
+        "exactImports.exactImportsOnSave": {
+          "type": "boolean",
+          "default": false,
+          "description": "Enable exact imports on save."
+        }
+      }
+    }
   },
-  "activationEvents": [
-    "onCommand:extension.exactImports"
-  ],
   "dependencies": {
     "typescript": "^5.1.6"
   },
